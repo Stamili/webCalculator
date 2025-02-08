@@ -14,17 +14,67 @@ function divide(a, b) {
     return a / b;
 }
 
-let num1;
-let operator;
-let num2;
+let num1 = '';
+let operator = '';
+let num2 = '';
 
 function operate(num1, operator, num2) {
     if (operator === '+')
-        add(num1, num2)
+        return add(num1, num2)
     else if (operator === '-')
-        subtract(num1, num2)
-    else if (operator === '*')
-        multiply(num1, num2)
-    else if (operator === '/')
-        divide(num1, num2)
+        return subtract(num1, num2)
+    else if (operator === 'x')
+        return multiply(num1, num2)
+    else if (operator === '÷')
+        return divide(num1, num2)
 }
+
+const displayScreen = document.querySelector("#displayScreen");
+displayScreen.textContent = '0';
+const buttons = document.querySelector("#buttons");
+
+buttons.addEventListener('click', function(e) {
+    const button = e.target;
+    const buttonText = button.textContent;
+
+    switch (button.className) {
+        case 'clear':
+            num1 = '';
+            operator = '';
+            num2 = '';
+            displayScreen.textContent = '0';
+            break;
+        case 'add':
+        case 'subtract':
+        case 'multiply':
+        case 'divide':
+            operator = buttonText;
+            displayScreen.textContent = buttonText;
+            break;
+        case 'equal':
+            if (num1 && operator && num2) {
+                let result = operate(parseFloat(num1), operator, parseFloat(num2));
+                result = result % 1 === 0 ? result : parseFloat(result.toFixed(4));
+                displayScreen.textContent = result;
+                num1 = result.toString();
+                operator = '';
+                num2 = '';
+            }
+            break;
+        case 'backspace':
+            let textContent = displayScreen.textContent;
+            textContent = textContent.slice(0, -1);
+            displayScreen.textContent = textContent;
+            break;
+        default:
+            if (operator) {
+                num2 += buttonText;
+                displayScreen.textContent = num2;
+            } else {
+                num1 += buttonText;
+                displayScreen.textContent = num1;
+            }
+    }
+
+    }
+)
