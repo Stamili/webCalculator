@@ -82,7 +82,15 @@ buttons.addEventListener('click', function(e) {
                     displayScreen.textContent = '0';
                 }
             }
-            
+            break;
+        case 'dot': 
+            if (displayScreen.textContent === num1 && !(num1.includes('.'))) {
+                num1 += buttonText;
+                displayScreen.textContent = num1;
+            } else if (displayScreen.textContent === num2 && !(num2.includes('.'))) {
+                num2 += buttonText;
+                displayScreen.textContent = num2;
+            }
             break;
         default:
             if (operator) {
