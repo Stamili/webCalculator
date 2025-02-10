@@ -66,9 +66,22 @@ buttons.addEventListener('click', function(e) {
             }
             break;
         case 'backspace':
-            let textContent = displayScreen.textContent;
-            textContent = textContent.slice(0, -1);
-            displayScreen.textContent = textContent;
+            if (displayScreen.textContent === num1) {
+                num1 = num1.slice(0, -1);
+                if (num1.length != 0) {
+                    displayScreen.textContent = num1;
+                } else {
+                    displayScreen.textContent = '0';
+                }
+            }
+            else if (displayScreen.textContent === num2) {
+                num2 = num2.slice(0, -1);
+                if (num2.length != 0) {
+                    displayScreen.textContent = num2;
+                } else {
+                    displayScreen.textContent = '0';
+                }
+            }
             
             break;
         default:
