@@ -165,6 +165,7 @@ document.addEventListener('keydown', function(e) {
             break;
     }
     if (button) {
+        e.preventDefault();
         button.click();
     }
 })
