@@ -101,6 +101,70 @@ buttons.addEventListener('click', function(e) {
                 displayScreen.textContent = num1;
             }
     }
+})
 
+document.addEventListener('keydown', function(e) {
+    let button;
+    switch (e.key) {
+        case '1':
+            button = document.querySelector('.one');
+            break;
+        case '2':
+            button = document.querySelector('.two');
+            break;
+        case '3':
+            button = document.querySelector('.three');
+            break;
+        case '4':
+            button = document.querySelector('.four');
+            break;
+        case '5':
+            button = document.querySelector('.five');
+            break;
+        case '6':
+            button = document.querySelector('.six');
+            break;
+        case '7':
+            button = document.querySelector('.seven');
+            break;
+        case '8':
+            button = document.querySelector('.eight');
+            break;
+        case '9':
+            button = document.querySelector('.nine');
+            break;
+        case '0':
+            button = document.querySelector('.zero');
+            break;
+        case '+':
+            button = document.querySelector('.add');
+            break;
+        case '-':
+            button = document.querySelector('.subtract');
+            break;
+        case '*':
+        case 'x':
+            button = document.querySelector('.multiply');
+            break;
+        case '/':
+        case '÷':
+            button = document.querySelector('.divide');
+            break;
+        case '=':
+        case 'Enter':
+            button = document.querySelector('.equal');
+            break;
+        case 'Backspace':
+            button = document.querySelector('.backspace');
+            break;
+        case '.':
+            button = document.querySelector('.dot');
+            break;
+        case 'Escape':
+            button = document.querySelector('.clear');
+            break;
     }
-)
+    if (button) {
+        button.click();
+    }
+})
