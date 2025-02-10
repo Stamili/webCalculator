@@ -11,7 +11,10 @@ function multiply(a, b) {
 }
 
 function divide(a, b) {
+    if (b != 0)
     return a / b;
+    else
+    return "Can't divide by 0!";   
 }
 
 let num1 = '';
@@ -54,6 +57,7 @@ buttons.addEventListener('click', function(e) {
         case 'equal':
             if (num1 && operator && num2) {
                 let result = operate(parseFloat(num1), operator, parseFloat(num2));
+                if (typeof result === 'number')
                 result = result % 1 === 0 ? result : parseFloat(result.toFixed(4));
                 displayScreen.textContent = result;
                 num1 = result.toString();
@@ -65,6 +69,7 @@ buttons.addEventListener('click', function(e) {
             let textContent = displayScreen.textContent;
             textContent = textContent.slice(0, -1);
             displayScreen.textContent = textContent;
+            
             break;
         default:
             if (operator) {
