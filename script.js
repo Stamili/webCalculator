@@ -51,8 +51,18 @@ buttons.addEventListener('click', function(e) {
         case 'subtract':
         case 'multiply':
         case 'divide':
-            operator = buttonText;
-            displayScreen.textContent = buttonText;
+            if (!operator && num1) {
+                operator = buttonText;
+                displayScreen.textContent = buttonText;
+            } else if (num1 && operator && num2) {
+                let result = operate(parseFloat(num1), operator, parseFloat(num2));
+                if (typeof result === 'number')
+                result = result % 1 === 0 ? result : parseFloat(result.toFixed(4));
+                displayScreen.textContent = result;
+                num1 = result.toString();
+                operator = buttonText;
+                num2 = '';
+            }   
             break;
         case 'equal':
             if (num1 && operator && num2) {
