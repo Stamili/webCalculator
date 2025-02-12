@@ -51,7 +51,7 @@ buttons.addEventListener('click', function(e) {
         case 'subtract':
         case 'multiply':
         case 'divide':
-            if (!operator && num1) {
+            if (num1 && !num2) {
                 operator = buttonText;
                 displayScreen.textContent = buttonText;
             } else if (num1 && operator && num2) {
